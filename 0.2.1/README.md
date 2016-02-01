@@ -12,13 +12,6 @@ docker pull zouchao2010/litesight:0.2.1
 
 ```
 
-## mkdir(创建DB目录)
-```shell
-mkdir -p /data/litesight-0.2.1/db/testnet
-mkdir -p /data/litesight-0.2.1/db/livenet
-
-```
-  
 ## run(创建并运行一个容器，退出时删除容器)
 ```shell
 docker run  --name litesight-0.2.1 \
@@ -42,7 +35,6 @@ docker run  --name litesight-0.2.1 \
 docker run  --name litesight-0.2.1 \
             -h litesight-021 \
             -p 4000:4000 \
-            -p 3001:3001 \
             -v /data/litesight-0.2.1:/var/lib/litesight \
             -e BITCOIND_HOST=x.x.x.x \
             -e BITCOIND_P2P_HOST=x.x.x.x \

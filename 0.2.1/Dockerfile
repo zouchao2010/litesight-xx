@@ -15,7 +15,7 @@ RUN apt-get update \
 #    && echo registry=https://registry.npm.taobao.org >> /root/.npmrc
 
 #install litesight
-RUN wget git clone https://github.com/pembo210/Litesight.git \
+RUN git clone https://github.com/pembo210/Litesight.git \
     && mv Litesight litesight \
     && cd litesight \
     && npm install
@@ -36,19 +36,20 @@ ENV BITCOIND_DATADIR                /var/lib/litesight/bitcoind
 # livenet|testnet
 ENV INSIGHT_NETWORK                 testnet
 ENV INSIGHT_PORT                    4000
-ENV INSIGHT_DB                      /var/lib/litesight/db
+ENV INSIGHT_DB                      /var/lib/litesight
 ENV INSIGHT_SAFE_CONFIRMATIONS      6
 ENV INSIGHT_IGNORE_CACHE            0
-ENV INSIGHT_FORCE_RPC_SYNC          0
+ENV INSIGHT_FORCE_RPC_SYNC          1
 ENV ENABLE_CURRENCYRATES            true
 ENV ENABLE_RATELIMITER              true
 ENV LOGGER_LEVEL                    info
 ENV ENABLE_HTTPS                    false
-ENV ENABLE_EMAILSTORE               true
+ENV ENABLE_EMAILSTORE               false
 ENV INSIGHT_EMAIL_CONFIRM_HOST      https://litesight.bitpay.com
 
 
-WORKDIR /opt/litesight
+ADD . /opt/litesight
+RUN chmod 755 run.sh
 
 EXPOSE 4000
-CMD ["npm", "start"]
+CMD ["./run.sh"]
