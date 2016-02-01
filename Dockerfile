@@ -1,11 +1,12 @@
 FROM node:0.10
 
+ENV TESTNET 0
 ENV VERSION 0.2.1
 
 WORKDIR /opt
 
 RUN apt-get update \
-    && apt-get install -y wget \
+    && apt-get install -y wget vim \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && apt-get autoclean -y \
