@@ -15,6 +15,8 @@ docker pull zouchao2010/litesight
 ## run(创建并运行一个容器，退出时删除容器)
 ```shell
 docker run  --name litesight \
+            --restart=always \
+            -m 2048m \
             -h litesight \
             -p 4001:4001 \
             -v /data/litesight/.litecoin:/root/.litecoin \
@@ -26,6 +28,8 @@ docker run  --name litesight \
 ## run(创建并运行一个容器，以守护进程方式)
 ```shell
 docker run  --name litesight \
+            --restart=always \
+            -m 2048m \
             -h litesight \
             -p 4001:4001 \
             -v /data/litesight/.litecoin:/root/.litecoin \
